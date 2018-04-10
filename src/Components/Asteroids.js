@@ -7,12 +7,12 @@ export default class Asteroids extends Component {
   }
   componentDidMount() {
     fetch(
-      "https://api.nasa.gov/neo/rest/v1/feed?start_date=2017-10-09&end_date=2017-10-09&api_key=A4IBckXcv9V1zUDbSL8guk9gHocpl9pL62T7VlNY"
+      "https://api.nasa.gov/neo/rest/v1/feed?start_date=2018-04-04&end_date=2018-04-09&api_key=A4IBckXcv9V1zUDbSL8guk9gHocpl9pL62T7VlNY"
     )
       .then(response => response.json())
       .then(responseData => {
         this.setState({
-          itemList: responseData.near_earth_objects["2017-10-09"]
+          itemList: responseData.near_earth_objects["2018-04-09"]
         });
       });
   }
@@ -27,26 +27,19 @@ export default class Asteroids extends Component {
     ));
     return (
       <div>
+        <h1 className="title is-3 has-text-centered">
+          <strong>Closest asteroids today</strong>
+        </h1>
         <div class="box">
           <article class="media">
             <table class="table is-striped is-narrow is-hoverable is-fullwidth">
-              <thead>
-                <th>Asteroids closest today</th>
-              </thead>
+              <thead />
               <tbody>
                 <tr>
-                  <th>
-                    <abbr title="Id">Id</abbr>
-                  </th>
-                  <th>
-                    <abbr title="Name">Name</abbr>
-                  </th>
-                  <th>
-                    <abbr title="Distance">Min distance</abbr>
-                  </th>
-                  <th>
-                    <abbr title="Hazard">Is potentially Hazardous</abbr>
-                  </th>
+                  <th>Id</th>
+                  <th>Name</th>
+                  <th>Min distance</th>
+                  <th>Is potentially Hazardous</th>
                 </tr>
                 {itemRows}
               </tbody>
