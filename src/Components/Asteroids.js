@@ -3,7 +3,17 @@ import React, { Component } from "react";
 export default class Asteroids extends Component {
   constructor(props) {
     super(props);
-    this.state = { itemList: [] };
+    let today = new Date(),
+      date =
+        today.getFullYear() +
+        "-" +
+        (today.getMonth() <= 10
+          ? "0" + (today.getMonth() + 1)
+          : today.getMonth() + 1) +
+        "-" +
+        (today.getDate() <= 10 ? "0" + (today.getDate() + 1) : today.getDate());
+
+    this.state = { date: date, itemList: [] };
   }
 
   componentDidMount() {
@@ -13,7 +23,7 @@ export default class Asteroids extends Component {
       .then(response => response.json())
       .then(responseData => {
         this.setState({
-          itemList: responseData.near_earth_objects["2018-04-10"]
+          itemList: responseData.near_earth_objects[this.state.date]
         });
       });
   }
