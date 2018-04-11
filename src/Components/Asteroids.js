@@ -32,7 +32,8 @@ export default class Asteroids extends Component {
       <tr key={key}>
         <td>{key.neo_reference_id}</td>
         <td>{key.name}</td>
-        <td>{key.close_approach_data[0].miss_distance.kilometers} km</td>
+        <td>{key.estimated_diameter.kilometers.estimated_diameter_max} Km</td>
+        <td>{key.close_approach_data[0].miss_distance.kilometers} Km</td>
         <td>{key.is_potentially_hazardous_asteroid ? "yes" : "no"}</td>
       </tr>
     ));
@@ -40,7 +41,7 @@ export default class Asteroids extends Component {
     return (
       <div>
         <h1 className="title is-3 has-text-centered">
-          <strong>Closest asteroids today</strong>
+          <strong>Closest asteroids today {this.state.date}</strong>
         </h1>
         <div className="box">
           <article className="media">
@@ -48,8 +49,9 @@ export default class Asteroids extends Component {
               <thead />
               <tbody>
                 <tr>
-                  <th>Id</th>
+                  <th>ID</th>
                   <th>Name</th>
+                  <th>Estimated diameter</th>
                   <th>Min distance</th>
                   <th>Is potentially Hazardous</th>
                 </tr>
